@@ -1,5 +1,9 @@
 #!/bin/bash
 
+# 安装包位置
+softDir="/root/ck"
+
+
 
 echo "开始卸载旧版本的mysql。。。"
 #卸载旧的mysql
@@ -46,6 +50,7 @@ echo ""
 
 echo "必要文件检查。。。"
 
+cd $softDir
 
 #判断目录中需要的文件是否都在
 fileList=$(ls)
@@ -76,7 +81,7 @@ echo "继续执行安装程序。。。"
 
 
 
-cd /root/ck
+cd $softDir
 
 ############################################################################################################
 
@@ -210,7 +215,7 @@ service firewalld stop
 
 
 
-cd /root/ck
+cd $softDir
 
 
 
@@ -264,7 +269,7 @@ service redisd start
 
 
 
-cd /root/ck
+cd $softDir
 
 
 
@@ -300,7 +305,7 @@ java -version
 echo "java环境安装完成。。。"
 
 
-cd /root/ck
+cd $softDir
 
 
 
