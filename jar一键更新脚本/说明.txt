@@ -1,0 +1,3 @@
+1:修改  devopt.sh  文件中的  jarName  的值为当前jar包的名字，请不要随意更改jar的名字
+
+2:修改  devopt.sh  文件中的  downLoadUrl  的值为更新包的下载地址

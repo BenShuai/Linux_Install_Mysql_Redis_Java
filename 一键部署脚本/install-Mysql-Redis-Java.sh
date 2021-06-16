@@ -1,9 +1,8 @@
 #!/bin/bash
 
-# 安装包位置
-softDir="/root/ck"
+basepath=$(pwd)
 
-
+echo $basepath
 
 echo "开始卸载旧版本的mysql。。。"
 #卸载旧的mysql
@@ -50,7 +49,6 @@ echo ""
 
 echo "必要文件检查。。。"
 
-cd $softDir
 
 #判断目录中需要的文件是否都在
 fileList=$(ls)
@@ -81,7 +79,7 @@ echo "继续执行安装程序。。。"
 
 
 
-cd $softDir
+cd $basepath
 
 ############################################################################################################
 
@@ -197,7 +195,7 @@ source  /etc/profile
 echo "启动mysql服务，并将root用户初始化"
 service mysql start
 
-mysql -uroot  -e "update mysql.user set authentication_string=password('CkioskWuhan01') where user='root';"
+mysql -uroot  -e "update mysql.user set authentication_string=password('BenShuaiOne') where user='root';"
 mysql -uroot  -e "use mysql;update user set host='%',password_expired='N' where user='root' and host='localhost';"
 mysql -uroot  -e "flush privileges;"
 
@@ -215,7 +213,7 @@ service firewalld stop
 
 
 
-cd $softDir
+cd $basepath
 
 
 
@@ -254,7 +252,9 @@ echo "初始化redis。。。"
 
 sed -i "s/daemonize no/daemonize yes/g" /usr/local/apps/redis-5.0.5/redis.conf
 
-sed -i "s/# requirepass foobared/requirepass CkioskWuhan01/g" /usr/local/apps/redis-5.0.5/redis.conf
+sed -i "s/bind 127.0.0.1/bind 0.0.0.0/g" /usr/local/apps/redis-5.0.5/redis.conf
+
+sed -i "s/# requirepass foobared/requirepass BenShuaiOne/g" /usr/local/apps/redis-5.0.5/redis.conf
 
 echo "设置redis开机启动。。。"
 cd  /etc
@@ -269,7 +269,7 @@ service redisd start
 
 
 
-cd $softDir
+cd $basepath
 
 
 
@@ -289,7 +289,7 @@ cd /home/
 mkdir java
 chmod -R 777 java
 
-cd /root/ck
+cd $basepath
 
 tar -zxvf jdk-8u171-linux-x64.tar.gz -C /home/java/
 
@@ -305,7 +305,7 @@ java -version
 echo "java环境安装完成。。。"
 
 
-cd $softDir
+cd $basepath
 
 
 
