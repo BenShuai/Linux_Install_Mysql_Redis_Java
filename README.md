@@ -22,8 +22,8 @@
 
 修改从windows上传到linux的sh文件的编码（按顺序执行下面的命令）
 
-vi 文件名
-esc
-:set ff=unix
-esc
-:wq
+    vi 文件名
+    esc
+    :set ff=unix
+    esc
+    :wq
